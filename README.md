@@ -76,12 +76,14 @@ pig 提供了详细的[部署文档 doc.pig4cloud.com](http://doc.pig4cloud.com)
 # 下载并运行服务端代码
 git clone https://gitee.com/log4j/pig.git
 
-cd pig && mvn clean install && docker-compose up -d
+cd pig && mvn clean install && docker-compose up -d pig-mysql
+# 等待 mysql 启动完成后，继续执行以下步骤
+docker-compose up -d
 
 # 下载并运行前端UI
 git clone https://gitee.com/log4j/pig-ui.git
 
-cd pig-ui && npm install -g cnpm --registry=https://registry.npm.taobao.org
+cd pig-ui && npm install -g cnpm --registry=https://registry.npm.taobao.org && cnpm install
 
 npm run build:docker && docker-compose up -d
 ```
